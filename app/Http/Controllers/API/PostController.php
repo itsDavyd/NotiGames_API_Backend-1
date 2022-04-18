@@ -12,7 +12,7 @@ class PostController extends Controller
     public function getAll()
     {
         $data = Post::get();
-        
+
         return response()->json($data,200);
     }
 
@@ -20,7 +20,7 @@ class PostController extends Controller
     {
         $data['titulo'] = $request['titulo'];
         $data['texto'] = $request['texto'];
-        $data['fechaPost'] = $request['fechaPost'];
+        // $data['fechaPost'] = $request['fechaPost'];
         $data['idUsuario'] = $request['idUsuario'];
         $data['idCategoria'] = $request['idCategoria'];
         Post::create($data);
@@ -53,7 +53,7 @@ class PostController extends Controller
         // $data['fechaPost'] = $request['fechaPost'];
         $data['idUsuario'] = $request['idUsuario'];
         $data['idCategoria'] = $request['idCategoria'];
-        Person::find($id)->update($data);
+        Post::find($id)->update($data);
 
         return response()->json([
             'message' => "Post actualizado Correctamente",
